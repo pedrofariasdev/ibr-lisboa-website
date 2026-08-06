@@ -10,18 +10,15 @@ export type NavigationItem = {
   children?: NavigationChild[];
 };
 
-
 export const navigationItems: NavigationItem[] = [
-
   {
     label: "Home",
     href: "/",
   },
 
-
   {
     label: "Sobre Nós",
-    href: "#sobre",
+    href: "/sobre-nos/nossa-historia",
     children: [
       {
         label: "Nossa História",
@@ -32,8 +29,7 @@ export const navigationItems: NavigationItem[] = [
       {
         label: "Nossa Visão",
         href: "/sobre-nos/nossa-visao",
-        description:
-          "Entenda nossa missão e propósito como igreja.",
+        description: "Entenda nossa missão e propósito como igreja.",
       },
       {
         label: "Liderança",
@@ -44,40 +40,34 @@ export const navigationItems: NavigationItem[] = [
     ],
   },
 
-
   {
     label: "Departamentos",
     href: "/departamentos",
     children: [
       {
         label: "IBR Kids",
-        href: "/departamentos/kids",
-        description:
-          "Um espaço preparado especialmente para as crianças.",
+        href: "/departamentos/ibr-kids",
+        description: "Um espaço preparado especialmente para as crianças.",
       },
       {
         label: "Chosen",
         href: "/departamentos/chosen",
-        description:
-          "Uma geração escolhida para viver o propósito de Deus.",
+        description: "Uma geração escolhida para viver o propósito de Deus.",
       },
       {
-        label: "Ensino",
-        href: "/departamentos/ensino",
-        description:
-          "Fortalecendo a fé por meio do ensino da Palavra de Deus.",
+        label: "Arise",
+        href: "/departamentos/arise",
+        description: "Uma geração levantada para viver seu chamado.",
       },
       {
         label: "Casais",
         href: "/departamentos/casais",
-        description:
-          "Fortalecendo relacionamentos e famílias.",
+        description: "Fortalecendo relacionamentos e famílias.",
       },
       {
         label: "Voluntários",
         href: "/departamentos/voluntarios",
-        description:
-          "Use seus dons para servir e fazer parte.",
+        description: "Use seus dons para servir e fazer parte.",
       },
       {
         label: "Louvor",
@@ -94,46 +84,38 @@ export const navigationItems: NavigationItem[] = [
     ],
   },
 
-
   {
     label: "Projetos",
     href: "/projetos",
     children: [
       {
-        label: "Projeto Esperança",
-        href: "/projetos/esperanca",
-        description:
-          "Levando alimento, cuidado e esperança para a comunidade.",
+        label: "Batismo nas Águas",
+        href: "/projetos/batismo",
+        description: "Uma decisão de fé e uma nova caminhada com Cristo.",
       },
       {
         label: "Bazar Social",
         href: "/projetos/bazar-social",
-        description:
-          "Solidariedade através de doações e apoio às famílias.",
+        description: "Solidariedade através de doações e apoio às famílias.",
       },
     ],
   },
-
 
   {
     label: "Agenda",
     href: "/agenda",
   },
 
-
   {
     label: "Generosidade",
-    href: "/generosidade",
+    href: "/doacoes",
   },
-
 
   {
     label: "Contacto",
     href: "/contacto",
   },
-
 ];
-
 
 export const liveNavigation = {
   isLive: false,

@@ -52,6 +52,12 @@ export const departamentos: Departamento[] = [
     description: "Adoração que conecta pessoas à presença de Deus.",
     image: "/images/departamentos/louvor.png",
   },
+  {
+    slug: "ensino",
+    name: "Ensino",
+    description: "Fortalecendo a fé por meio do ensino da Palavra de Deus.",
+    image: "/images/departamentos/ensino.png",
+  },
 ];
 
 export function getDepartamento(slug: string) {
