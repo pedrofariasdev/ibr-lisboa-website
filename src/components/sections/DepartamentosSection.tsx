@@ -47,7 +47,7 @@ export function DepartamentosSection() {
 
             <Link
               key={departamento.name}
-              href={departamento.href}
+              href={`/departamentos/${departamento.slug}`}
               className="group relative min-h-[360px] overflow-hidden rounded-3xl border border-white/10 bg-[#111111] transition duration-500 hover:-translate-y-2 hover:border-[#e4a63a]/50"
             >
 
