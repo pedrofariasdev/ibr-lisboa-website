@@ -41,54 +41,62 @@ export function ProjetosSection() {
         {/* Cards */}
         <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 
-          {projetos.map((projeto) => (
+      {projetos.map((projeto) => {
+        const conteudo = (
+          <>
+            <Image
+              src={projeto.image}
+              alt={projeto.name}
+              fill
+              sizes="(min-width: 768px) 50vw, 100vw"
+              className="object-cover transition duration-700 group-hover:scale-110"
+            />
 
-            <Link
-              key={projeto.name}
-              href={projeto.href ?? "#"}
-              className="group relative min-h-[380px] overflow-hidden rounded-3xl border border-white/10 bg-[#111111] transition duration-500 hover:-translate-y-2 hover:border-[#e4a63a]/50"
-            >
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
 
-              <Image
-                src={projeto.image}
-                alt={projeto.name}
-                fill
-                sizes="(min-width: 768px) 50vw, 100vw"
-                className="object-cover transition duration-700 group-hover:scale-110"
-              />
+            <div className="absolute inset-x-0 bottom-0 p-8">
+              <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[#e4a63a]">
+                Projeto
+              </span>
 
+              <h3 className="mt-3 text-4xl font-semibold tracking-tight">
+                {projeto.name}
+              </h3>
 
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
+              <p className="mt-4 max-w-md text-base leading-7 text-white/65">
+                {projeto.description}
+              </p>
 
-
-              {/* Conteúdo */}
-              <div className="absolute inset-x-0 bottom-0 p-8">
-
-                <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[#e4a63a]">
-                  Projeto
-                </span>
-
-
-                <h3 className="mt-3 text-4xl font-semibold tracking-tight">
-                  {projeto.name}
-                </h3>
-
-
-                <p className="mt-4 max-w-md text-base leading-7 text-white/65">
-                  {projeto.description}
-                </p>
-
-
+              {projeto.href ? (
                 <span className="mt-6 inline-flex text-sm font-semibold text-[#e4a63a] opacity-0 transition duration-300 group-hover:opacity-100">
                   Conhecer projeto →
                 </span>
+              ) : (
+                <span className="mt-6 inline-flex rounded-full border border-white/20 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white/50">
+                  Em breve
+                </span>
+              )}
+            </div>
+          </>
+        );
 
-              </div>
+        const classesBase =
+          "group relative min-h-[380px] overflow-hidden rounded-3xl border border-white/10 bg-[#111111] transition duration-500";
 
-            </Link>
-
-          ))}
+        return projeto.href ? (
+          <Link
+            key={projeto.name}
+            href={projeto.href}
+            className={`${classesBase} hover:-translate-y-2 hover:border-[#e4a63a]/50`}
+          >
+            {conteudo}
+          </Link>
+        ) : (
+          <div key={projeto.name} className={classesBase}>
+            {conteudo}
+          </div>
+        );
+        })}
 
         </div>
 
