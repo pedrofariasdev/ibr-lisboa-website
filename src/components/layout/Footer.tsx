@@ -4,13 +4,12 @@ import Link from "next/link";
 const footerLinks = [
   { name: "Home", href: "/" },
   { name: "Cultos", href: "/cultos" },
-  { name: "Quem Somos", href: "#sobre" },
-  { name: "Departamentos", href: "#departamentos" },
-  { name: "Projetos", href: "#projetos" },
+  { name: "Quem Somos", href: "/sobre-nos/nossa-historia" },
+  { name: "Departamentos", href: "/departamentos" },
+  { name: "Projetos", href: "/projetos" },
   { name: "Eventos", href: "/agenda" },
-  { name: "Contacto", href: "#contacto" },
+  { name: "Contacto", href: "/contacto" },
 ];
-
 
 export function Footer() {
   return (
