@@ -3,7 +3,7 @@ import Link from "next/link";
 export function SobreSection() {
   return (
     <section
-      id="quem-somos"
+      id="sobre"
       className="overflow-hidden border-t border-white/10 bg-black px-6 py-24 text-white"
     >
       <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-2 lg:items-center">
@@ -14,10 +14,10 @@ export function SobreSection() {
             muted
             loop
             playsInline
-            className="h-full min-h-[480px]w-full object-cover"
+            className="h-full min-h-[480px] w-full object-cover"
           >
             <source src="/videos/ibr-sobre.mp4" type="video/mp4" />
-          </video>
+          </video> 
 
           <div className="absolute inset-0 bg-black/25" />
 
@@ -80,7 +80,7 @@ export function SobreSection() {
           </div>
 
           <Link
-            href="/quem-somos"
+            href="/sobre-nos/nossa-historia"
             className="mt-9 inline-flex rounded-full border border-white/20 px-7 py-3.5 font-semibold transition hover:border-[#E4A63A] hover:bg-[#E4A63A] hover:text-black"
           >
             Conheça a nossa história
