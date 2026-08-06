@@ -1,138 +1,89 @@
 const API_KEY = process.env.YOUTUBE_API_KEY;
 const CHANNEL_ID = process.env.YOUTUBE_CHANNEL_ID;
 
+const REVALIDATE = 3600; // 1 hora
 
-export async function getYoutubeMessages() {
+export type Mensagem = {
+  id: string;
+  titulo: string;
+  descricao: string;
+  imagem: string;
+  data: string;
+};
 
+type PlaylistItem = {
+  snippet: {
+    title: string;
+    description: string;
+    publishedAt: string;
+    resourceId: { videoId: string };
+    thumbnails: {
+      high?: { url: string };
+      medium?: { url: string };
+      default?: { url: string };
+    };
+  };
+};
 
-  if (!API_KEY || !CHANNEL_ID) {
-
-    throw new Error(
-      "Configuração do YouTube não encontrada"
-    );
-
-  }
-
-
-
-  const response = await fetch(
-
-    `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=50`
-
+async function getUploadsPlaylistId(): Promise<string | null> {
+  const res = await fetch(
+    `https://www.googleapis.com/youtube/v3/channels?key=${API_KEY}&id=${CHANNEL_ID}&part=contentDetails`,
+    { next: { revalidate: 86400 } }
   );
 
+  if (!res.ok) {
+    console.warn("YouTube channels.list falhou:", res.status);
+    return null;
+  }
 
+  const data = await res.json();
+  return data.items?.[0]?.contentDetails?.relatedPlaylists?.uploads ?? null;
+}
 
-  if (!response.ok) {
-
-    console.warn(
-      "API do YouTube temporariamente indisponível:",
-      response.status
-    );
-
+export async function getYoutubeMessages(): Promise<Mensagem[]> {
+  if (!API_KEY || !CHANNEL_ID) {
+    console.warn("Configuração do YouTube em falta — a devolver lista vazia.");
     return [];
   }
 
+  try {
+    const playlistId = await getUploadsPlaylistId();
+    if (!playlistId) return [];
 
-
-  const data = await response.json();
-
-
-
-  type YoutubeItem = {
-
-    id: {
-
-      kind: string;
-
-      videoId?: string;
-
-    };
-
-
-    snippet: {
-
-      title: string;
-
-      description: string;
-
-      publishedAt: string;
-
-
-      thumbnails: {
-
-        high: {
-
-          url: string;
-
-        };
-
-      };
-
-    };
-
-  };
-
-
-
-
-  const videos = (data.items as YoutubeItem[])
-
-    .filter(
-
-      (item) =>
-        item.id.kind === "youtube#video"
-
-    )
-
-
-    .map(
-
-      (item) => ({
-
-        id: item.id.videoId ?? "",
-
-
-        titulo: item.snippet.title,
-
-
-        descricao:
-          item.snippet.description,
-
-
-        imagem:
-          item.snippet.thumbnails.high.url,
-
-
-        data:
-          item.snippet.publishedAt
-
-      })
-
+    const res = await fetch(
+      `https://www.googleapis.com/youtube/v3/playlistItems?key=${API_KEY}&playlistId=${playlistId}&part=snippet&maxResults=50`,
+      { next: { revalidate: REVALIDATE } }
     );
 
+    if (!res.ok) {
+      console.warn("YouTube playlistItems.list falhou:", res.status);
+      return [];
+    }
 
+    const data = await res.json();
+    const items = (data.items ?? []) as PlaylistItem[];
 
+    const videos = items
+      .filter((item) => item.snippet?.resourceId?.videoId)
+      .map((item) => ({
+        id: item.snippet.resourceId.videoId,
+        titulo: item.snippet.title,
+        descricao: item.snippet.description,
+        imagem:
+          item.snippet.thumbnails.high?.url ??
+          item.snippet.thumbnails.medium?.url ??
+          item.snippet.thumbnails.default?.url ??
+          "",
+        data: item.snippet.publishedAt,
+      }))
+      .filter((v) => v.titulo !== "Private video" && v.titulo !== "Deleted video");
 
-
-  const videosUnicos = videos.filter(
-
-    (video, index, array) =>
-
-      index === array.findIndex(
-
-        (item) =>
-          item.titulo === video.titulo
-
-      )
-
-  );
-
-
-
-
-
-  return videosUnicos;
-
-
+    return videos.filter(
+      (video, index, array) =>
+        index === array.findIndex((item) => item.titulo === video.titulo)
+    );
+  } catch (erro) {
+    console.warn("Erro ao contactar a API do YouTube:", erro);
+    return [];
+  }
 }
