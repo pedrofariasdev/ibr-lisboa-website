@@ -145,20 +145,23 @@ export const agenda: AgendaItem[] = [
 
 
   {
-    title: "Conexão a Dois",
-    slug: "conexao-a-dois",
+    title: "Formatura Casados Para Sempre",
+    slug: "casados-para-sempre-formatura",
 
     group: "evento-especial",
     type: "ministerio",
-    status: "breve",
+    status: "confirmado",
+
+    date: "2026-08-22",
+    dateLabel: "22 de agosto de 2026",
 
     category: "Família",
 
     description:
-      "Momentos de comunhão, aprendizado e fortalecimento dos casais e das famílias.",
+      "Nossa Formatura Casados Para Sempre é um momento especial de celebração e reconhecimento do compromisso dos casais que participaram do curso e se dedicaram a fortalecer seus relacionamentos.",
 
     image:
-      "/images/projetos/casais.png",
+      "/images/projetos/evento-casais.jpeg",
   },
 
 
