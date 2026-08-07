@@ -94,9 +94,19 @@ export const navigationItems: NavigationItem[] = [
         description: "Uma decisão de fé e uma nova caminhada com Cristo.",
       },
       {
+        label: "Projeto Esperança",
+        href: "/projetos/projeto-esperanca",
+        description: "Levando alimento, cuidado e esperança para a comunidade.",
+      },
+      {
         label: "Bazar Social",
         href: "/projetos/bazar-social",
         description: "Solidariedade através de doações e apoio às famílias.",
+      },
+            {
+        label: "Mãos Que Acolhem",
+        href: "/projetos/maos-que-acolhem",
+        description: "Porque há quem não possa vir, nós vamos.",
       },
     ],
   },
