@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import type { LiveData } from "@/types/live";
 
 import {
   liveNavigation,
@@ -25,9 +26,11 @@ function resolveNavigationHref(
 }
 
 
-export function Navbar() {
+export function Navbar({ live }: { live: LiveData }) {
   const [activeMenu, setActiveMenu] =
     useState<string | null>(null);
+
+  const isLive = live.status === "live";
 
 
   return (
@@ -241,46 +244,27 @@ export function Navbar() {
 
 
         {/* Transmissão */}
-
-          <a
-            href={liveNavigation.href}
-            className={`
-              hidden
-              items-center
-              gap-2
-              rounded-full
-              px-5
-              py-2.5
-              text-sm
-              font-semibold
-              transition
-              lg:flex
-              ${
-                liveNavigation.isLive
-                  ? "bg-[#e4a63a] text-black hover:bg-[#f0b64c]"
-                  : "border border-white/20 bg-white/5 text-white hover:bg-white/10"
-              }
-            `}
-          >
-
-          {liveNavigation.isLive && (
-
+        <Link
+          href={isLive ? "/cultos#ao-vivo" : "/cultos"}
+          className={`
+            hidden items-center gap-2 rounded-full px-5 py-2.5
+            text-sm font-semibold transition lg:flex
+            ${
+              isLive
+                ? "bg-[#e4a63a] text-black hover:bg-[#f0b64c]"
+                : "border border-white/20 bg-white/5 text-white hover:bg-white/10"
+            }
+          `}
+        >
+          {isLive && (
             <span className="relative flex h-3 w-3">
-
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-500 opacity-75" />
-
               <span className="relative inline-flex h-3 w-3 rounded-full bg-red-600" />
-
             </span>
-
           )}
 
-
-          {liveNavigation.isLive
-            ? liveNavigation.liveLabel
-            : liveNavigation.offlineLabel}
-
-        </a>
+          {isLive ? liveNavigation.liveLabel : liveNavigation.offlineLabel}
+        </Link>     
 
 
 
