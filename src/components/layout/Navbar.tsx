@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import type { LiveData } from "@/types/live";
 
 import {
   liveNavigation,
@@ -26,11 +25,11 @@ function resolveNavigationHref(
 }
 
 
-export function Navbar({ live }: { live: LiveData }) {
+export function Navbar() {
   const [activeMenu, setActiveMenu] =
     useState<string | null>(null);
 
-  const isLive = live.status === "live";
+  const isLive = false;
 
 
   return (

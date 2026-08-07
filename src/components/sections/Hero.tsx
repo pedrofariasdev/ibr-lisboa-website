@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { getProximoCulto } from "@/utils/proximoCulto";
+import { getNextCulto } from "@/lib/getNextCulto";
 
 const heroImages = [
   "/images/hero/culto-03.png",
@@ -13,7 +13,7 @@ const heroImages = [
 
 export function Hero() {
 
-  const proximoCulto = getProximoCulto();
+  const proximoCulto = getNextCulto();
 
   const [currentImage, setCurrentImage] = useState(0);
 

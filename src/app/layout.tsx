@@ -5,7 +5,6 @@ import "./globals.css";
 
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
-import { getLiveData } from "@/lib/live";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,7 +30,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const live = await getLiveData();
+
 
   return (
     <html
@@ -51,7 +50,7 @@ export default async function RootLayout({
           bg-black
         "
       >
-        <Navbar live={live} />
+        <Navbar />
 
         <main className="flex-1">
           {children}
