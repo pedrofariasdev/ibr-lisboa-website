@@ -12,7 +12,6 @@ export function ProjetosSection() {
 
         {/* Cabeçalho */}
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-
           <div>
             <span className="text-xs font-semibold uppercase tracking-[0.35em] text-[#e4a63a]">
               Nossa missão
@@ -30,45 +29,56 @@ export function ProjetosSection() {
               Uma fé que ultrapassa as paredes da igreja e alcança pessoas
               através do amor, serviço e transformação.
             </p>
+            <Link
+              href="/projetos"
+              className="mt-6 inline-flex text-sm font-semibold text-[#e4a63a] transition hover:text-[#f0b64c]"
+            >
+              Conhecer todos os projetos →
+            </Link>
           </div>
-
         </div>
 
         {/* Cards */}
-        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
 
-          {projetos.map((projeto) => {
+          {projetos.slice(0, 3).map((projeto) => {
             const conteudo = (
               <>
-                <Image
-                  src={projeto.image}
-                  alt={projeto.name}
-                  fill
-                  sizes="(min-width: 768px) 50vw, 100vw"
-                  className="object-cover transition duration-700 group-hover:scale-110"
-                />
+                {/* Imagem */}
+                <div className="flex h-[220px] items-center justify-center overflow-hidden bg-black p-6">
+                  <Image
+                    src={projeto.image}
+                    alt={projeto.name}
+                    width={600}
+                    height={440}
+                    className={`transition duration-700 group-hover:scale-105 ${
+                      projeto.logo
+                        ? "max-h-full w-auto object-contain"
+                        : "h-full w-full object-cover"
+                    }`}
+                  />
+                </div>
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
-
-                <div className="absolute inset-x-0 bottom-0 p-8">
+                {/* Texto */}
+                <div className="flex flex-1 flex-col p-7">
                   <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[#e4a63a]">
                     Projeto
                   </span>
 
-                  <h3 className="mt-3 text-4xl font-semibold tracking-tight">
+                  <h3 className="mt-3 text-3xl font-semibold tracking-tight">
                     {projeto.name}
                   </h3>
 
-                  <p className="mt-4 max-w-md text-base leading-7 text-white/65">
+                  <p className="mt-3 text-sm leading-6 text-white/60">
                     {projeto.description}
                   </p>
 
                   {projeto.emBreve ? (
-                    <span className="mt-6 inline-flex rounded-full border border-white/20 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white/50">
+                    <span className="mt-auto inline-flex w-fit rounded-full border border-white/20 px-4 py-1.5 pt-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white/50">
                       Em breve
                     </span>
                   ) : (
-                    <span className="mt-6 inline-flex text-sm font-semibold text-[#e4a63a] opacity-0 transition duration-300 group-hover:opacity-100">
+                    <span className="mt-auto pt-5 text-sm font-semibold text-[#e4a63a] opacity-0 transition group-hover:opacity-100">
                       Conhecer projeto →
                     </span>
                   )}
@@ -77,7 +87,7 @@ export function ProjetosSection() {
             );
 
             const classesBase =
-              "group relative min-h-[380px] overflow-hidden rounded-3xl border border-white/10 bg-[#111111] transition duration-500";
+              "group flex flex-col overflow-hidden rounded-3xl border border-white/10 bg-[#111111] transition duration-500";
 
             return projeto.emBreve ? (
               <div key={projeto.slug} className={classesBase}>
