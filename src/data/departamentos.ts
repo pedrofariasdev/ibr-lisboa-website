@@ -14,13 +14,13 @@ export const departamentos: Departamento[] = [
     slug: "chosen",
     name: "Chosen",
     description: "Uma geração vivendo propósito e identidade em Cristo.",
-    image: "/images/departamentos/chosen.png",
+    image: "/images/departamentos/chosen.jpeg",
   },
   {
     slug: "ibr-kids",
     name: "IBR Kids",
     description: "Construindo uma fé sólida desde a infância.",
-    image: "/images/departamentos/ibr-kids.png",
+    image: "/images/departamentos/ibr-kids.jpeg",
   },
   {
     slug: "casais",
@@ -32,7 +32,7 @@ export const departamentos: Departamento[] = [
     slug: "arise",
     name: "Arise",
     description: "Uma geração levantada para viver seu chamado.",
-    image: "/images/departamentos/arise.png",
+    image: "/images/departamentos/arise.jpeg",
   },
   {
     slug: "voluntarios",

@@ -24,7 +24,7 @@ export const projetos: Projeto[] = [
     slug: "projeto-esperanca",
     name: "Projeto Esperança",
     description: "Levando alimento, cuidado e esperança para a comunidade.",
-    image: "/images/projetos/esperanca.png",
+    image: "/images/projetos/projeto-esperanca.jpeg",
     emBreve: true,
   },
 ];

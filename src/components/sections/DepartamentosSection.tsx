@@ -39,30 +39,30 @@ export function DepartamentosSection() {
           </div>
         </div>
 
-
         {/* Cards */}
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
 
-          {departamentos.map((departamento) => (
+          {departamentos.slice(0, 6).map((departamento) => (
 
             <Link
-              key={departamento.name}
+              key={departamento.slug}
               href={`/departamentos/${departamento.slug}`}
-              className="group relative min-h-[360px] overflow-hidden rounded-3xl border border-white/10 bg-[#111111] transition duration-500 hover:-translate-y-2 hover:border-[#e4a63a]/50"
+              className="group flex flex-col overflow-hidden rounded-3xl border border-white/10 bg-[#111111] transition duration-500 hover:-translate-y-2 hover:border-[#e4a63a]/50"
             >
 
-              <Image
-                src={departamento.image}
-                alt={departamento.name}
-                fill
-                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                className="object-cover transition duration-700 group-hover:scale-110"
-              />
+              {/* Logo */}
+              <div className="flex h-[190px] items-center justify-center bg-black p-8">
+                <Image
+                  src={departamento.image}
+                  alt={departamento.name}
+                  width={320}
+                  height={160}
+                  className="max-h-full w-auto object-contain transition duration-500 group-hover:scale-105"
+                />
+              </div>
 
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
-
-
-              <div className="absolute inset-x-0 bottom-0 p-7">
+              {/* Texto */}
+              <div className="flex flex-1 flex-col p-7">
 
                 <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[#e4a63a]">
                   Departamento
@@ -76,7 +76,7 @@ export function DepartamentosSection() {
                   {departamento.description}
                 </p>
 
-                <span className="mt-5 inline-flex text-sm font-semibold text-[#e4a63a] opacity-0 transition group-hover:opacity-100">
+                <span className="mt-auto pt-5 text-sm font-semibold text-[#e4a63a] opacity-0 transition group-hover:opacity-100">
                   Conhecer departamento →
                 </span>
 

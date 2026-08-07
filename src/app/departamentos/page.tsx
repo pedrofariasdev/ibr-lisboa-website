@@ -33,19 +33,21 @@ export default function DepartamentosPage() {
             <Link
               key={dep.slug}
               href={`/departamentos/${dep.slug}`}
-              className="group relative min-h-[380px] overflow-hidden rounded-3xl border border-white/10 bg-[#111111] transition duration-500 hover:-translate-y-2 hover:border-[#e4a63a]/50"
+              className="group flex flex-col overflow-hidden rounded-3xl border border-white/10 bg-[#111111] transition duration-500 hover:-translate-y-2 hover:border-[#e4a63a]/50"
             >
-              <Image
-                src={dep.image}
-                alt={dep.name}
-                fill
-                sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                className="object-cover transition duration-700 group-hover:scale-110"
-              />
+              {/* Logo */}
+              <div className="flex h-[190px] items-center justify-center bg-black p-8">
+                <Image
+                  src={dep.image}
+                  alt={dep.name}
+                  width={320}
+                  height={160}
+                  className="max-h-full w-auto object-contain transition duration-500 group-hover:scale-105"
+                />
+              </div>
 
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
-
-              <div className="absolute inset-x-0 bottom-0 p-8">
+              {/* Texto */}
+              <div className="flex flex-1 flex-col p-8">
                 <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[#e4a63a]">
                   Departamento
                 </span>
@@ -58,7 +60,7 @@ export default function DepartamentosPage() {
                   {dep.description}
                 </p>
 
-                <span className="mt-6 inline-flex text-sm font-semibold text-[#e4a63a] opacity-0 transition duration-300 group-hover:opacity-100">
+                <span className="mt-auto pt-6 text-sm font-semibold text-[#e4a63a] opacity-0 transition duration-300 group-hover:opacity-100">
                   Conhecer departamento →
                 </span>
               </div>
