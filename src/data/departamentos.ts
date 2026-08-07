@@ -56,7 +56,7 @@ export const departamentos: Departamento[] = [
     slug: "ensino",
     name: "Ensino",
     description: "Fortalecendo a fé por meio do ensino da Palavra de Deus.",
-    image: "/images/departamentos/ensino.png",
+    image: "/images/departamentos/escola-biblia.png",
   },
 ];
 
