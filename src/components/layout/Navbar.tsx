@@ -2,6 +2,9 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { useEffect } from "react";
+import { getNextCulto } from "@/lib/getNextCulto";
+import { getLiveStatus } from "@/lib/getLiveStatus";
 
 import {
   liveNavigation,
@@ -29,7 +32,21 @@ export function Navbar() {
   const [activeMenu, setActiveMenu] =
     useState<string | null>(null);
 
-  const isLive = false;
+  const [isLive, setIsLive] = useState(false);
+
+  useEffect(() => {
+    function verificar() {
+      const proximo = getNextCulto();
+      if (!proximo) return setIsLive(false);
+
+      setIsLive(getLiveStatus(proximo.data) === "live");
+    }
+
+    verificar();
+    const intervalo = setInterval(verificar, 60000);
+
+    return () => clearInterval(intervalo);
+  }, []);
 
 
   return (
