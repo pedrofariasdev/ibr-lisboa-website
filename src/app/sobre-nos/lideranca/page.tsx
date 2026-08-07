@@ -64,7 +64,7 @@ const departmentLeaders: Leader[] = [
     description:
       "Conduzindo a igreja em adoração e comunhão com Deus através da música.",
 
-      image: "/images/lideranca/louvor.png",
+      image: "/images/lideranca/lideranca-louvor.png",
   },
 
   {

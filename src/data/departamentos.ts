@@ -20,7 +20,7 @@ export const departamentos: Departamento[] = [
     slug: "ibr-kids",
     name: "IBR Kids",
     description: "Construindo uma fé sólida desde a infância.",
-    image: "/images/departamentos/ibr-kids.jpeg",
+    image: "/images/departamentos/ibr-kids.png",
   },
   {
     slug: "casais",
