@@ -1,6 +1,7 @@
 import { departamentos } from "@/data/departamentos";
 import { projetos } from "@/data/projetos";
 import { createPageMetadata } from "@/lib/seo";
+import { ExternalMediaEmbed } from "@/components/privacy/ExternalMediaEmbed";
 import Link from "next/link";
 
 const WHATSAPP = "351969704199";
@@ -119,12 +120,14 @@ export default async function ContactoPage({
         </div>
 
           <div className="min-h-[420px] overflow-hidden rounded-3xl border border-white/10">
-            <iframe
+            <ExternalMediaEmbed
+              className="h-full min-h-[420px] w-full"
+              fallbackHref="https://www.google.com/maps/search/?api=1&query=Av.%20Alm.%20Reis%20228%2C%201000-056%20Lisboa"
+              provider="Google Maps"
               src={`https://www.google.com/maps?q=${encodeURIComponent(MORADA)}&output=embed`}
               title="Localização da IBR Lisboa"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              className="h-full min-h-[420px] w-full"
             />
           </div>
         </div>

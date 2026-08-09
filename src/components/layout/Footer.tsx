@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { PrivacySettingsButton } from "@/components/privacy/PrivacySettingsButton";
+
 const footerLinks = [
   { name: "Home", href: "/" },
   { name: "Cultos", href: "/cultos" },
@@ -14,6 +16,13 @@ const footerLinks = [
   { name: "Doações", href: "/doacoes" },
   { name: "IBR Europa", href: "/ibr-europa" },
   { name: "Contacto", href: "/contacto" },
+];
+
+const legalLinks = [
+  { name: "Privacidade", href: "/politica-de-privacidade" },
+  { name: "Cookies", href: "/politica-de-cookies" },
+  { name: "Termos de utilização", href: "/termos-de-utilizacao" },
+  { name: "Fotografias e filmagens", href: "/politica-de-imagem" },
 ];
 
 export function Footer() {
@@ -129,8 +138,25 @@ export function Footer() {
 
 
         <div className="mt-16 border-t border-white/10 pt-8 text-sm text-white/40">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+            <p>
+              © {new Date().getFullYear()} IBR Lisboa. Todos os direitos
+              reservados.
+            </p>
 
-           © {new Date().getFullYear()} IBR Lisboa. Todos os direitos reservados.
+            <div className="flex flex-wrap gap-x-5 gap-y-3">
+              {legalLinks.map((link) => (
+                <Link
+                  className="transition hover:text-white"
+                  href={link.href}
+                  key={link.href}
+                >
+                  {link.name}
+                </Link>
+              ))}
+              <PrivacySettingsButton />
+            </div>
+          </div>
         </div>
 
 

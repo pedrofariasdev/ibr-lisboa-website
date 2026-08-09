@@ -5,6 +5,7 @@ import { getNextCulto } from "@/lib/getNextCulto";
 import { getLiveStatus } from "@/lib/getLiveStatus";
 import { getCultoImage } from "@/lib/getCultoImage";
 import { Countdown } from "@/components/ui/Countdown";
+import { ExternalMediaEmbed } from "@/components/privacy/ExternalMediaEmbed";
 
 const CHANNEL_ID = process.env.NEXT_PUBLIC_YOUTUBE_CHANNEL_ID;
 
@@ -25,12 +26,15 @@ export function LivePlayer() {
 
         {status === "live" && CHANNEL_ID && (
           <>
-            <iframe
-              className="absolute inset-0 h-full w-full"
-              src={`https://www.youtube.com/embed/live_stream?channel=${CHANNEL_ID}`}
-              title="IBR Lisboa Ao Vivo"
+            <ExternalMediaEmbed
               allow="autoplay; encrypted-media; picture-in-picture"
               allowFullScreen
+              className="absolute inset-0 h-full w-full"
+              fallbackHref="https://www.youtube.com/@ibrlisboa/live"
+              loading="eager"
+              provider="YouTube"
+              src={`https://www.youtube.com/embed/live_stream?channel=${CHANNEL_ID}`}
+              title="IBR Lisboa Ao Vivo"
             />
 
             <div className="absolute left-6 top-6 flex items-center gap-2 rounded-full bg-red-600 px-4 py-2 text-sm font-semibold text-white">

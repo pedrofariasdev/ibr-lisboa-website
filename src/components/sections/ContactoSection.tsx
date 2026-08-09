@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { ExternalMediaEmbed } from "@/components/privacy/ExternalMediaEmbed";
 
 export function ContactoSection() {
   return (
@@ -75,11 +75,11 @@ export function ContactoSection() {
 
           <div className="overflow-hidden rounded-3xl border border-white/10">
 
-            <iframe
+            <ExternalMediaEmbed
+              fallbackHref="https://www.google.com/maps/search/?api=1&query=Av.%20Alm.%20Reis%20228%2C%201000-056%20Lisboa"
+              provider="Google Maps"
               src="https://www.google.com/maps?q=Av.%20Alm.%20Reis%20228,%201000-056%20Lisboa&output=embed"
               title="Localização da Igreja Batista Renovada Lisboa"
-              width="100%"
-              height="380"
               loading="lazy"
               className="h-full min-h-[420px] border-0"
             />

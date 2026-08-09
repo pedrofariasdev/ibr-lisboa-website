@@ -38,6 +38,26 @@ const staticRoutes: SitemapEntry[] = [
     priority: 0.7,
   },
   { path: "/contacto", changeFrequency: "yearly", priority: 0.7 },
+  {
+    path: "/politica-de-privacidade",
+    changeFrequency: "yearly",
+    priority: 0.3,
+  },
+  {
+    path: "/politica-de-cookies",
+    changeFrequency: "yearly",
+    priority: 0.3,
+  },
+  {
+    path: "/termos-de-utilizacao",
+    changeFrequency: "yearly",
+    priority: 0.3,
+  },
+  {
+    path: "/politica-de-imagem",
+    changeFrequency: "yearly",
+    priority: 0.3,
+  },
 ];
 
 function toSitemapItem(entry: SitemapEntry): MetadataRoute.Sitemap[number] {

@@ -1,5 +1,6 @@
 import { getYoutubeMessages } from "@/lib/youtube";
 import { MessageList } from "@/components/ui/MessageList";
+import { ExternalMediaEmbed } from "@/components/privacy/ExternalMediaEmbed";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata = createPageMetadata({
@@ -163,13 +164,15 @@ export default async function MensagensPage({
               "
             >
 
-              <iframe
+              <ExternalMediaEmbed
                 className="
                   h-full
                   w-full
                 "
+                fallbackHref={`https://www.youtube.com/watch?v=${videoSelecionado}`}
+                provider="YouTube"
                 src={`https://www.youtube.com/embed/${videoSelecionado}`}
-                title={mensagemAtual?.titulo}
+                title={mensagemAtual?.titulo ?? "Mensagem IBR Lisboa"}
                 allowFullScreen
               />
 
