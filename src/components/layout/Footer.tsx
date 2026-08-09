@@ -4,10 +4,15 @@ import Link from "next/link";
 const footerLinks = [
   { name: "Home", href: "/" },
   { name: "Cultos", href: "/cultos" },
-  { name: "Quem Somos", href: "/sobre-nos/nossa-historia" },
+  { name: "Mensagens", href: "/mensagens" },
+  { name: "Nossa História", href: "/sobre-nos/nossa-historia" },
+  { name: "Nossa Visão", href: "/sobre-nos/nossa-visao" },
+  { name: "Liderança", href: "/sobre-nos/lideranca" },
   { name: "Departamentos", href: "/departamentos" },
   { name: "Projetos", href: "/projetos" },
-  { name: "Eventos", href: "/agenda" },
+  { name: "Agenda", href: "/agenda" },
+  { name: "Doações", href: "/doacoes" },
+  { name: "IBR Europa", href: "/ibr-europa" },
   { name: "Contacto", href: "/contacto" },
 ];
 
@@ -17,7 +22,7 @@ export function Footer() {
 
       <div className="mx-auto max-w-7xl">
 
-        <div className="grid gap-12 md:grid-cols-[1.2fr_1fr_1fr]">
+        <div className="grid gap-12 lg:grid-cols-[1.1fr_1.5fr_0.8fr]">
 
 
           {/* Marca */}
@@ -49,7 +54,7 @@ export function Footer() {
             </h3>
 
 
-            <ul className="mt-6 space-y-4">
+            <ul className="mt-6 grid gap-x-8 gap-y-4 sm:grid-cols-2">
 
               {footerLinks.map((link) => (
 
@@ -87,6 +92,7 @@ export function Footer() {
               <a
                 href="https://wa.me/351969704199"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="text-white/60 transition hover:text-white"
               >
                 WhatsApp →
@@ -96,6 +102,7 @@ export function Footer() {
               <Link
                 href="https://www.instagram.com/ibrlisboa"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="text-white/60 transition hover:text-white"
               >
                 Instagram →
@@ -105,6 +112,7 @@ export function Footer() {
               <Link
                 href="https://www.youtube.com/@ibrlisboa"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="text-white/60 transition hover:text-white"
               >
                 YouTube →
