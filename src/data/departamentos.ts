@@ -20,13 +20,13 @@ export const departamentos: Departamento[] = [
     slug: "ibr-kids",
     name: "IBR Kids",
     description: "Construindo uma fé sólida desde a infância.",
-    image: "/images/departamentos/ibr-kids.png",
+    image: "/images/departamentos/ibr-kids.webp",
   },
   {
     slug: "casais",
     name: "Casais",
     description: "Fortalecendo famílias através da comunhão e da fé.",
-    image: "/images/departamentos/casais.png",
+    image: "/images/departamentos/casais.webp",
   },
   {
     slug: "arise",
@@ -38,13 +38,13 @@ export const departamentos: Departamento[] = [
     slug: "voluntarios",
     name: "Voluntários",
     description: "Servindo com amor e dedicação.",
-    image: "/images/departamentos/voluntarios.png",
+    image: "/images/departamentos/voluntarios.webp",
   },
   {
     slug: "midia",
     name: "Mídia",
     description: "Comunicação e criatividade a serviço do Reino.",
-    image: "/images/departamentos/midia.png",
+    image: "/images/departamentos/midia.webp",
   },
   {
     slug: "louvor",
@@ -56,7 +56,7 @@ export const departamentos: Departamento[] = [
     slug: "ensino",
     name: "Ensino",
     description: "Fortalecendo a fé por meio do ensino da Palavra de Deus.",
-    image: "/images/departamentos/escola-biblia.png",
+    image: "/images/departamentos/escola-biblia.webp",
   },
 ];
 

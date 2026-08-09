@@ -38,7 +38,7 @@ export const projetos: Projeto[] = [
     slug: "maos-que-acolhem",
     name: "Mãos Que Acolhem",
     description: "Cuidado que chega a casa.",
-    image: "/images/projetos/maos-que-acolhem.png",
+    image: "/images/projetos/maos-que-acolhem.webp",
     logo: true,
     sobre:
       "O Mãos Que Acolhem leva a presença da igreja a quem não pode vir até ela. Visitamos famílias em casa, acompanhamos pessoas hospitalizadas, apoiamos quem atravessa períodos de doença e estamos presentes junto de mães recém-paridas nos primeiros tempos com o bebé. Onde há alguém a precisar de companhia, oração ou uma ajuda prática, é aí que queremos estar.",
@@ -48,7 +48,7 @@ export const projetos: Projeto[] = [
     slug: "bazar-social",
     name: "Bazar Social",
     description: "Solidariedade e apoio à comunidade através da partilha.",
-    image: "/images/projetos/bazar.png",
+    image: "/images/projetos/bazar.webp",
   },
 ];
 

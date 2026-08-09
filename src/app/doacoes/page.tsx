@@ -66,12 +66,19 @@ const contributionDestinations = [
   },
 ];
 
-export const metadata = createPageMetadata({
-  title: "Doações",
-  description:
-    "Conheça as formas de contribuir com os dízimos, ofertas, missões e projetos da IBR Lisboa.",
-  path: "/doacoes",
-});
+export const metadata = {
+  ...createPageMetadata({
+    title: "Doações",
+    description:
+      "Conheça as formas de contribuir com os dízimos, ofertas, missões e projetos da IBR Lisboa.",
+    path: "/doacoes",
+  }),
+  formatDetection: {
+    address: false,
+    email: false,
+    telephone: false,
+  },
+};
 
 export default function DoacoesPage() {
   return (
@@ -208,6 +215,11 @@ export default function DoacoesPage() {
                 a sua contribuição.
               </p>
 
+              <p className="mt-4 max-w-lg text-sm leading-6 text-white/50">
+                Nesta fase, os dados são apenas informativos. Nenhuma opção
+                abre links, aplicações ou pagamentos automáticos.
+              </p>
+
               <div className="mt-8 rounded-2xl border border-[#e4a63a]/25 bg-[#e4a63a]/[0.06] p-6">
                 <p className="text-sm leading-6 text-white/75">
                   Por segurança, utilize apenas os dados publicados nos canais
@@ -217,7 +229,10 @@ export default function DoacoesPage() {
               </div>
             </div>
 
-            <dl className="divide-y divide-white/10 border-y border-white/10">
+            <dl
+              aria-label="Meios de contribuição apresentados apenas como informação"
+              className="divide-y divide-white/10 border-y border-white/10"
+            >
               {contributionMethods.map((method) => (
                 <div
                   key={method.title}

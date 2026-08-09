@@ -14,9 +14,13 @@ export function SobreSection() {
             muted
             loop
             playsInline
+            preload="metadata"
             className="h-full min-h-[480px] w-full object-cover"
           >
-            <source src="/videos/ibr-sobre.mp4" type="video/mp4" />
+            <source
+              src="https://pub-dca1bb5b94ed4e229db7b368e7093c91.r2.dev/videos/ibr-sobre-web.mp4"
+              type="video/mp4"
+            />
           </video> 
 
           <div className="absolute inset-0 bg-black/25" />

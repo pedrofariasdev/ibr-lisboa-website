@@ -90,7 +90,7 @@ export const agenda: AgendaItem[] = [
       "Um tempo especial de comunhão, crescimento espiritual e relacionamento para os Jovens e Adolescentes.",
 
     image:
-      "/images/projetos/acampamento.png",
+      "/images/projetos/acampamento.webp",
 
     ctaLabel: "Saiba mais",
 
@@ -117,7 +117,7 @@ export const agenda: AgendaItem[] = [
       "Um momento separado para as crianças buscarem a Deus, crescerem na fé e viverem dias especiais.",
 
     image:
-      "/images/projetos/evento-kids.png",
+      "/images/projetos/evento-kids.webp",
 
     ctaLabel: "Saiba mais",
 
@@ -182,7 +182,7 @@ export const agenda: AgendaItem[] = [
       "Descobrindo Jesus no Evangelho de Marcos.",
 
     image:
-      "/images/projetos/escola-biblia.png",
+      "/images/projetos/escola-biblia.webp",
   },
 
 
@@ -202,7 +202,7 @@ export const agenda: AgendaItem[] = [
     description:
     "Um encontro para novos batizados conhecerem os fundamentos da fé, iniciarem sua caminhada cristã e crescerem em comunhão.",
     image:
-      "/images/projetos/start.png",
+      "/images/projetos/start.webp",
   },
 
 ];
