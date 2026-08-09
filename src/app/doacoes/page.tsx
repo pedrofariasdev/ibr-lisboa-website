@@ -24,19 +24,22 @@ const contributionTypes = [
 
 const contributionMethods = [
   {
-    title: "Transferência / IBAN",
-    description:
-      "Os dados bancários oficiais serão disponibilizados após validação da IBR Lisboa.",
-  },
-  {
     title: "MB Way",
-    description:
-      "O número oficial e as respetivas orientações serão publicados nesta página.",
+    value: "969 704 199",
+    description: "Utilize este número oficial para contribuir através de MB Way.",
+    status: "Disponível",
   },
   {
-    title: "Contribuição online",
-    description:
-      "Uma opção de contribuição digital segura será apresentada quando estiver disponível.",
+    title: "SPIN",
+    value: "592 007 014",
+    description: "Utilize este identificador oficial para contribuir através de SPIN.",
+    status: "Disponível",
+  },
+  {
+    title: "PIX — Brasil",
+    value: "pix@ibr.pt",
+    description: "Utilize esta chave oficial para contribuir através de PIX no Brasil.",
+    status: "Disponível",
   },
 ];
 
@@ -190,8 +193,8 @@ export default function DoacoesPage() {
                 Simples, claro e seguro.
               </h2>
               <p className="mt-6 max-w-lg text-lg leading-8 text-white/65">
-                As opções abaixo serão ativadas quando todos os dados e
-                processos estiverem confirmados pela igreja.
+                Utilize uma das opções oficiais disponíveis abaixo para fazer
+                a sua contribuição.
               </p>
 
               <div className="mt-8 rounded-2xl border border-[#e4a63a]/25 bg-[#e4a63a]/[0.06] p-6">
@@ -213,12 +216,28 @@ export default function DoacoesPage() {
                     <span className="text-2xl font-semibold tracking-tight">
                       {method.title}
                     </span>
-                    <span className="w-fit shrink-0 rounded-full border border-white/15 bg-white/[0.04] px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/70">
-                      Em breve
+                    <span
+                      className={`w-fit shrink-0 rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] ${
+                        method.status === "Disponível"
+                          ? "border-[#e4a63a]/40 bg-[#e4a63a]/10 text-[#e4a63a]"
+                          : "border-white/15 bg-white/[0.04] text-white/70"
+                      }`}
+                    >
+                      {method.status}
                     </span>
                   </dt>
-                  <dd className="mt-3 max-w-xl leading-7 text-white/65">
-                    {method.description}
+                  <dd className="mt-3 max-w-xl">
+                    {method.value && (
+                      <p className="font-mono text-xl font-semibold tracking-wide text-white sm:text-2xl">
+                        <span className="sr-only">Dados para contribuição: </span>
+                        {method.value}
+                      </p>
+                    )}
+                    <p
+                      className={`${method.value ? "mt-3" : ""} leading-7 text-white/65`}
+                    >
+                      {method.description}
+                    </p>
                   </dd>
                 </div>
               ))}
