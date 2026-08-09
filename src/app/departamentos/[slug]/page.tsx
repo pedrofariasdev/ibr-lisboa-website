@@ -3,6 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { departamentos, getDepartamento } from "@/data/departamentos";
+import { createPageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return departamentos.map((dep) => ({ slug: dep.slug }));
@@ -18,10 +19,11 @@ export async function generateMetadata({
 
   if (!dep) return { title: "Departamento não encontrado" };
 
-  return {
+  return createPageMetadata({
     title: dep.name,
     description: dep.description,
-  };
+    path: `/departamentos/${dep.slug}`,
+  });
 }
 
 export default async function DepartamentoPage({

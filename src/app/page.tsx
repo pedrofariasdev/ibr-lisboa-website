@@ -5,6 +5,12 @@ import { DepartamentosSection } from "@/components/sections/DepartamentosSection
 import { ProjetosSection } from "@/components/sections/ProjetosSection";
 import { ContactoSection } from "@/components/sections/ContactoSection";
 import { IbrEuropaSection } from "@/components/sections/IbrEuropaSection";
+import { createPageMetadata, DEFAULT_DESCRIPTION } from "@/lib/seo";
+
+export const metadata = createPageMetadata({
+  description: DEFAULT_DESCRIPTION,
+  path: "/",
+});
 
 
 export default function Home() {

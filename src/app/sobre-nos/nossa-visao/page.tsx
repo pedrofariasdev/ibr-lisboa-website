@@ -1,4 +1,12 @@
 import Link from "next/link";
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata = createPageMetadata({
+  title: "Nossa Visão",
+  description:
+    "Conheça a missão, a visão e os valores que orientam a IBR Lisboa.",
+  path: "/sobre-nos/nossa-visao",
+});
 
 
 const values = [

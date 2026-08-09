@@ -1,4 +1,12 @@
 import Link from "next/link";
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata = createPageMetadata({
+  title: "Nossa História",
+  description:
+    "Conheça a história, a trajetória e a identidade da IBR Lisboa.",
+  path: "/sobre-nos/nossa-historia",
+});
 
 
 const journey = [

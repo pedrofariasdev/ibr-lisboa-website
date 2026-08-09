@@ -1,13 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
-import type { Metadata } from "next";
 import { projetos } from "@/data/projetos";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Projetos",
   description:
     "Conheça os projetos da IBR Lisboa e a nossa missão de servir a comunidade.",
-};
+  path: "/projetos",
+});
 
 export default function ProjetosPage() {
   return (

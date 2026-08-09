@@ -6,6 +6,14 @@ import { getNextCulto } from "@/lib/getNextCulto";
 import { getCultoCardImage } from "@/lib/getCultoCardImage";
 import { cultos } from "@/data/cultos";
 import { getYoutubeMessages } from "@/lib/youtube";
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata = createPageMetadata({
+  title: "Cultos",
+  description:
+    "Conheça os horários, encontros e celebrações da IBR Lisboa.",
+  path: "/cultos",
+});
 
 
 export default async function CultosPage() {

@@ -1,10 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
+import { createPageMetadata } from "@/lib/seo";
 
 import {
   agenda,
   type AgendaItem,
 } from "@/data/agenda";
+
+export const metadata = createPageMetadata({
+  title: "Agenda",
+  description:
+    "Conheça os próximos encontros, conferências e eventos da IBR Lisboa.",
+  path: "/agenda",
+});
 
 
 function parseDate(date: string) {

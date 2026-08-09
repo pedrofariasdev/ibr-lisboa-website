@@ -3,6 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { projetos, getProjeto } from "@/data/projetos";
+import { createPageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return projetos
@@ -20,10 +21,11 @@ export async function generateMetadata({
 
   if (!projeto) return { title: "Projeto não encontrado" };
 
-  return {
+  return createPageMetadata({
     title: projeto.name,
     description: projeto.description,
-  };
+    path: `/projetos/${projeto.slug}`,
+  });
 }
 
 export default async function ProjetoPage({

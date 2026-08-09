@@ -1,13 +1,14 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { createPageMetadata } from "@/lib/seo";
 
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Liderança",
   description:
     "Conheça a liderança pastoral e os responsáveis pelos departamentos da IBR Lisboa.",
-};
+  path: "/sobre-nos/lideranca",
+});
 
 
 type Leader = {

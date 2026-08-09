@@ -1,13 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
-import type { Metadata } from "next";
 import { departamentos } from "@/data/departamentos";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Departamentos",
   description:
     "Conheça os departamentos da IBR Lisboa e encontre o seu lugar para crescer e servir.",
-};
+  path: "/departamentos",
+});
 
 export default function DepartamentosPage() {
   return (

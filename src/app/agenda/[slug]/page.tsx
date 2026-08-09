@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
 import { agenda } from "@/data/agenda";
+import { createPageMetadata } from "@/lib/seo";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -21,10 +22,13 @@ export async function generateMetadata({
 
   if (!item) return { title: "Evento não encontrado" };
 
-  return {
+  return createPageMetadata({
     title: item.title,
-    description: item.description,
-  };
+    description:
+      item.description ??
+      `Conheça os detalhes de ${item.title}, um evento da IBR Lisboa.`,
+    path: `/agenda/${item.slug}`,
+  });
 }
 
 export default async function EventDetailsPage({ params }: PageProps) {

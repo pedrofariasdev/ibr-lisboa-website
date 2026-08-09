@@ -1,7 +1,13 @@
-import Link from "next/link";
-
 import { getYoutubeMessages } from "@/lib/youtube";
 import { MessageList } from "@/components/ui/MessageList";
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata = createPageMetadata({
+  title: "Mensagens",
+  description:
+    "Assista às mensagens e pregações da IBR Lisboa e fortaleça a sua caminhada de fé.",
+  path: "/mensagens",
+});
 
 
 type Mensagem = {

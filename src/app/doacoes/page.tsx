@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
 import Link from "next/link";
+import { createPageMetadata } from "@/lib/seo";
 
 const contributionTypes = [
   {
     number: "01",
     title: "Dízimos",
     description:
-      "Uma expressão regular de fé, gratidão e compromisso com a vida e a missão da igreja.",
+      "Um mandamento bíblico e uma expressão de obediência a Cristo, fidelidade e gratidão a Deus.",
   },
   {
     number: "02",
@@ -66,11 +66,12 @@ const contributionDestinations = [
   },
 ];
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Doações",
   description:
     "Conheça as formas de contribuir com os dízimos, ofertas, missões e projetos da IBR Lisboa.",
-};
+  path: "/doacoes",
+});
 
 export default function DoacoesPage() {
   return (
@@ -114,12 +115,22 @@ export default function DoacoesPage() {
                 fortalecer famílias, apoiar projetos e anunciar o Evangelho.
               </p>
               <p>
-                Contribuir é uma decisão pessoal e voluntária. Nesta página
-                encontrará apenas informações confirmadas e canais oficiais da
-                IBR Lisboa.
+                O dízimo não é uma missão ou campanha da igreja. É um
+                mandamento bíblico e uma resposta de obediência a Cristo. As
+                ofertas destinadas a missões e projetos são voluntárias.
               </p>
             </div>
           </div>
+
+          <blockquote className="mt-10 max-w-3xl border-l-2 border-[#e4a63a] bg-white/[0.03] px-6 py-6 sm:px-8 sm:py-7">
+            <p className="text-xl font-medium leading-8 text-white sm:text-2xl sm:leading-9">
+              “Trazei todos os dízimos à casa do tesouro, para que haja
+              mantimento na minha casa.”
+            </p>
+            <footer className="mt-4 text-sm font-semibold uppercase tracking-[0.25em] text-[#e4a63a]">
+              <cite className="not-italic">Malaquias 3:10</cite>
+            </footer>
+          </blockquote>
 
           <a
             href="#formas-de-contribuir"

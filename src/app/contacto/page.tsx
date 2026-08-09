@@ -1,16 +1,17 @@
-import type { Metadata } from "next";
 import { departamentos } from "@/data/departamentos";
 import { projetos } from "@/data/projetos";
+import { createPageMetadata } from "@/lib/seo";
 import Link from "next/link";
 
 const WHATSAPP = "351969704199";
 const MORADA = "Av. Alm. Reis 228, 1000-056 Lisboa";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Contacto",
   description:
     "Fale connosco. Estamos disponíveis para receber você e ajudar no que precisar.",
-};
+  path: "/contacto",
+});
 
 export default async function ContactoPage({
   searchParams,
