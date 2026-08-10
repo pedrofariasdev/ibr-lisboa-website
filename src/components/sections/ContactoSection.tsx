@@ -81,7 +81,7 @@ export function ContactoSection() {
               src="https://www.google.com/maps?q=Av.%20Alm.%20Reis%20228,%201000-056%20Lisboa&output=embed"
               title="Localização da Igreja Batista Renovada Lisboa"
               loading="lazy"
-              className="h-full min-h-[420px] border-0"
+              className="h-full min-h-[420px] w-full border-0"
             />
 
           </div>
