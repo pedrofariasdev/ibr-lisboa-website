@@ -59,7 +59,7 @@ export function SobreSection() {
           <div className="mt-10 grid gap-6 border-y border-white/10 py-8 sm:grid-cols-3">
             <div>
               <strong className="block text-2xl font-semibold">Fé</strong>
-              <span className="mt-1 block text-sm text-white/45">
+              <span className="mt-1 block text-sm text-white/60">
                 Vivida diariamente
               </span>
             </div>
@@ -68,7 +68,7 @@ export function SobreSection() {
               <strong className="block text-2xl font-semibold">
                 Comunhão
               </strong>
-              <span className="mt-1 block text-sm text-white/45">
+              <span className="mt-1 block text-sm text-white/60">
                 Pessoas conectadas
               </span>
             </div>
@@ -77,7 +77,7 @@ export function SobreSection() {
               <strong className="block text-2xl font-semibold">
                 Propósito
               </strong>
-              <span className="mt-1 block text-sm text-white/45">
+              <span className="mt-1 block text-sm text-white/60">
                 Dons em movimento
               </span>
             </div>
