@@ -6,6 +6,7 @@ import {
   useEffect,
   useMemo,
   useState,
+  useSyncExternalStore,
 } from "react";
 
 import {
@@ -28,6 +29,44 @@ function getEventTimestamp(event: AgendaItem) {
   }
 
   return parseDate(finalDate).getTime();
+}
+
+
+function getLocalTodayTimestamp() {
+  const today = new Date();
+
+  today.setHours(0, 0, 0, 0);
+  return today.getTime();
+}
+
+
+function getServerTodayTimestamp() {
+  return null;
+}
+
+
+function subscribeToLocalDate(
+  callback: () => void
+) {
+  const interval = window.setInterval(
+    callback,
+    60 * 60 * 1000
+  );
+
+  window.addEventListener("focus", callback);
+  document.addEventListener(
+    "visibilitychange",
+    callback
+  );
+
+  return () => {
+    window.clearInterval(interval);
+    window.removeEventListener("focus", callback);
+    document.removeEventListener(
+      "visibilitychange",
+      callback
+    );
+  };
 }
 
 
@@ -476,13 +515,15 @@ export function AgendaSection() {
   const [currentIndex, setCurrentIndex] =
     useState(0);
 
+  const todayTimestamp =
+    useSyncExternalStore<number | null>(
+      subscribeToLocalDate,
+      getLocalTodayTimestamp,
+      getServerTodayTimestamp
+    );
+
 
   const specialEvents = useMemo(() => {
-    const today = new Date();
-
-    today.setHours(0, 0, 0, 0);
-
-
     return agenda
       .filter(
         (event) =>
@@ -491,16 +532,19 @@ export function AgendaSection() {
           event.status !== "encerrado"
       )
       .filter((event) => {
-        if (!event.date) {
+        if (
+          !event.date ||
+          todayTimestamp === null
+        ) {
           return true;
         }
 
         return (
           getEventTimestamp(event) >=
-          today.getTime()
+          todayTimestamp
         );
       });
-  }, []);
+  }, [todayTimestamp]);
 
 
   const featuredEvent =
