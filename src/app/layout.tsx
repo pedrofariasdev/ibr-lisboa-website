@@ -5,6 +5,7 @@ import "./globals.css";
 
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
+import { LiveStatusProvider } from "@/components/live/LiveStatusProvider";
 import { ConsentProvider } from "@/components/privacy/ConsentProvider";
 import {
   churchStructuredData,
@@ -82,15 +83,17 @@ export default async function RootLayout({
           }}
         />
 
-        <ConsentProvider>
-          <Navbar />
+        <LiveStatusProvider>
+          <ConsentProvider>
+            <Navbar />
 
-          <main className="flex-1">
-            {children}
-          </main>
+            <main className="flex-1">
+              {children}
+            </main>
 
-          <Footer />
-        </ConsentProvider>
+            <Footer />
+          </ConsentProvider>
+        </LiveStatusProvider>
       </body>
     </html>
   );

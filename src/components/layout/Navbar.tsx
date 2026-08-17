@@ -1,11 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import { useEffect } from "react";
-import { useRef } from "react";
-import { getNextCulto } from "@/lib/getNextCulto";
-import { getLiveStatus } from "@/lib/getLiveStatus";
+import { useEffect, useRef, useState } from "react";
+
+import { useLiveStatus } from "@/components/live/LiveStatusProvider";
 
 import {
   liveNavigation,
@@ -30,6 +28,7 @@ function resolveNavigationHref(
 
 
 export function Navbar() {
+  const { liveStream } = useLiveStatus();
   const [activeMenu, setActiveMenu] =
     useState<string | null>(null);
 
@@ -39,26 +38,12 @@ export function Navbar() {
   const mobileMenuButtonRef =
     useRef<HTMLButtonElement>(null);
 
-  const [isLive, setIsLive] = useState(false);
+  const isLive = Boolean(liveStream);
 
   function closeNavigation() {
     setActiveMenu(null);
     setIsMobileMenuOpen(false);
   }
-
-  useEffect(() => {
-    function verificar() {
-      const proximo = getNextCulto();
-      if (!proximo) return setIsLive(false);
-
-      setIsLive(getLiveStatus(proximo.data) === "live");
-    }
-
-    verificar();
-    const intervalo = setInterval(verificar, 60000);
-
-    return () => clearInterval(intervalo);
-  }, []);
 
   useEffect(() => {
     if (!isMobileMenuOpen) return;
@@ -446,7 +431,7 @@ export function Navbar() {
                   `}
                 >
                   {isLive && (
-                    <span className="h-2.5 w-2.5 rounded-full bg-red-600" />
+                    <span className="h-2.5 w-2.5 animate-pulse rounded-full bg-red-600" />
                   )}
                   {isLive ? liveNavigation.liveLabel : liveNavigation.offlineLabel}
                 </Link>
