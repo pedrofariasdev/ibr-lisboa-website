@@ -6,9 +6,9 @@ import { useEffect, useState } from "react";
 import { getNextCulto } from "@/lib/getNextCulto";
 
 const heroImages = [
-  "/images/hero/culto-03.png",
-  "/images/hero/culto-02.png",
-  "/images/hero/culto-01.png",
+  "/images/cultos/culto-3.webp",
+  "/images/cultos/culto-2.webp",
+  "/images/cultos/culto-1.webp",
 ];
 
 export function Hero() {
@@ -39,6 +39,8 @@ export function Hero() {
           alt="IBR Lisboa"
           fill
           priority={index === 0}
+          quality={60}
+          sizes="100vw"
           className={`absolute inset-0 object-cover transition-all duration-[4000ms] ${
           index === currentImage
           ? "opacity-50 scale-105"

@@ -50,7 +50,7 @@ export const departamentos: Departamento[] = [
     slug: "louvor",
     name: "Louvor",
     description: "Adoração que conecta pessoas à presença de Deus.",
-    image: "/images/departamentos/louvor.png",
+    image: "/images/departamentos/louvor.webp",
   },
   {
     slug: "ensino",

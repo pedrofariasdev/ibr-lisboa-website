@@ -4,12 +4,12 @@ export function getCultoImage(nome: string) {
 
 
   if (culto.includes("terça") || culto.includes("terca")) {
-    return "/images/cultos/culto-3.png";
+    return "/images/cultos/culto-3.webp";
   }
 
 
   if (culto.includes("quinta")) {
-    return "/images/cultos/culto-2.png";
+    return "/images/cultos/culto-2.webp";
   }
 
 
@@ -18,10 +18,10 @@ export function getCultoImage(nome: string) {
     culto.includes("celebração") ||
     culto.includes("celebracao")
   ) {
-    return "/images/cultos/culto-1.png";
+    return "/images/cultos/culto-1.webp";
   }
 
 
-  return "/images/cultos/culto-1.png";
+  return "/images/cultos/culto-1.webp";
 
 }

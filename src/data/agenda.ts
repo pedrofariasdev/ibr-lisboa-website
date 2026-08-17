@@ -63,7 +63,7 @@ export const agenda: AgendaItem[] = [
       "Uma conferência da IBR Europa para um tempo de fé, comunhão e expansão.",
 
     image:
-      "/images/events/expansao-euro-conference-2026.png",
+      "/images/events/expansao-euro-conference-2026.webp",
 
     featured: true,
 
@@ -140,7 +140,7 @@ export const agenda: AgendaItem[] = [
       "Uma decisão de fé e o início de uma nova caminhada com Cristo.",
 
     image:
-      "/images/projetos/batismo.png",
+      "/images/projetos/batismo.webp",
   },
 
 

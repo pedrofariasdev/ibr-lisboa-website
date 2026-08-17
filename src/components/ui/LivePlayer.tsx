@@ -7,20 +7,18 @@ import { useLiveStatus } from "@/components/live/LiveStatusProvider";
 import { ExternalMediaEmbed } from "@/components/privacy/ExternalMediaEmbed";
 import { Countdown } from "@/components/ui/Countdown";
 import { getCultoImage } from "@/lib/getCultoImage";
-import { getNextCulto } from "@/lib/getNextCulto";
-import { getLiveStatus } from "@/lib/getLiveStatus";
+import { getScheduledTransmission } from "@/lib/getNextCulto";
 
 export function LivePlayer() {
   const { isChecking, liveStream } = useLiveStatus();
-  const proximoCulto = getNextCulto();
+  const scheduledTransmission = getScheduledTransmission();
+  const proximoCulto = scheduledTransmission;
 
   const cultoImage = proximoCulto
     ? getCultoImage(proximoCulto.nome)
-    : "/images/cultos/culto-1.png";
+    : "/images/cultos/culto-1.webp";
 
-  const scheduledStatus = proximoCulto
-    ? getLiveStatus(proximoCulto.data)
-    : "upcoming";
+  const scheduledStatus = scheduledTransmission?.status ?? "upcoming";
 
   return (
     <div id="ao-vivo" className="grid grid-cols-1 gap-6">
@@ -54,6 +52,8 @@ export function LivePlayer() {
                 src={liveStream.thumbnailUrl || cultoImage}
                 alt=""
                 fill
+                quality={60}
+                sizes="(min-width: 1280px) 1200px, calc(100vw - 3rem)"
                 className="object-cover opacity-35"
               />
               <div className="absolute inset-0 bg-black/70" />
@@ -82,27 +82,40 @@ export function LivePlayer() {
           >
             A verificar a transmissão no YouTube…
           </div>
-        ) : scheduledStatus === "starting" ? (
+        ) : scheduledStatus === "starting" ||
+          scheduledStatus === "waiting" ? (
           <>
             <Image
               src={cultoImage}
               alt=""
               fill
+              quality={60}
+              sizes="(min-width: 1280px) 1200px, calc(100vw - 3rem)"
               className="object-cover opacity-30"
             />
 
             <div className="absolute inset-0 bg-black/70" />
 
             <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-6 text-center">
-              <span className="rounded-full border border-red-500/30 bg-red-500/10 px-5 py-2 text-xs uppercase tracking-[0.25em] text-red-400">
-                🔴 Preparando transmissão
+              <span className="flex items-center gap-2 rounded-full border border-[#e4a63a]/30 bg-[#e4a63a]/10 px-5 py-2 text-xs uppercase tracking-[0.2em] text-[#f0b64c]">
+                <span className="h-2 w-2 animate-pulse rounded-full bg-[#e4a63a]" />
+                {scheduledStatus === "starting"
+                  ? "Transmissão prestes a começar"
+                  : "Aguardando sinal do YouTube"}
               </span>
 
               <h2 className="mt-6 text-3xl font-bold sm:text-4xl">
-                O culto começa em instantes
+                A transmissão está a começar
               </h2>
 
-              {proximoCulto && <Countdown targetDate={proximoCulto.data} />}
+              <p className="mt-4 max-w-xl text-sm leading-6 text-white/70 sm:text-base">
+                O vídeo aparecerá automaticamente assim que o sinal do YouTube
+                estiver disponível. Não precisa atualizar a página.
+              </p>
+
+              {scheduledStatus === "starting" && proximoCulto && (
+                <Countdown targetDate={proximoCulto.data} />
+              )}
             </div>
           </>
         ) : (
@@ -111,6 +124,8 @@ export function LivePlayer() {
               src={cultoImage}
               alt=""
               fill
+              quality={60}
+              sizes="(min-width: 1280px) 1200px, calc(100vw - 3rem)"
               className="object-cover opacity-30"
             />
 

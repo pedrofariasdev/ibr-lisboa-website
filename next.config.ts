@@ -21,6 +21,8 @@ const contentSecurityPolicy = [
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   images: {
+    minimumCacheTTL: 604_800,
+    qualities: [60, 75],
     remotePatterns: [
       {
         protocol: "https",

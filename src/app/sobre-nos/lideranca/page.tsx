@@ -28,7 +28,7 @@ const featuredLeaders: Leader[] = [
     description:
       "Responsável pela direção espiritual e ministerial da IBR Lisboa, conduzindo a igreja com fé, cuidado e compromisso com a Palavra de Deus.",
 
-      image: "/images/lideranca/bispo.png",
+      image: "/images/lideranca/bispo.webp",
   },
 
   {
@@ -38,7 +38,7 @@ const featuredLeaders: Leader[] = [
     description:
       "Ao lado do Bispo, atua no cuidado pastoral, no fortalecimento das famílias e no desenvolvimento da igreja.",
 
-      image: "/images/lideranca/pastora-ana-bela.png",
+      image: "/images/lideranca/pastora-ana-bela.webp",
     
   },
 ];
@@ -53,7 +53,7 @@ const departmentLeaders: Leader[] = [
     description:
       "Fortalecendo a fé por meio do ensino da Palavra de Deus.",
     
-      image: "/images/lideranca/ensino.png",
+      image: "/images/lideranca/ensino.webp",
   
   },
 
@@ -65,7 +65,7 @@ const departmentLeaders: Leader[] = [
     description:
       "Conduzindo a igreja em adoração e comunhão com Deus através da música.",
 
-      image: "/images/lideranca/lideranca-louvor.png",
+      image: "/images/lideranca/lideranca-louvor.webp",
   },
 
   {
@@ -77,7 +77,7 @@ const departmentLeaders: Leader[] = [
       "Ensinando as crianças a conhecerem Jesus em um ambiente seguro, acolhedor e cheio de alegria.",
 
     
-      image: "/images/lideranca/kids.png",
+      image: "/images/lideranca/kids.webp",
   },
 
   {
@@ -88,7 +88,7 @@ const departmentLeaders: Leader[] = [
     description:
       "Fortalecendo relacionamentos e ajudando casais a construírem famílias firmadas em Deus.",
 
-      image: "/images/lideranca/casais.png",
+      image: "/images/lideranca/casais.webp",
   },
 
   {
@@ -99,7 +99,7 @@ const departmentLeaders: Leader[] = [
     description:
       "Acompanhando adolescentes em uma jornada de fé, identidade, comunhão e propósito.",
 
-      image: "/images/lideranca/chosen.png",
+      image: "/images/lideranca/chosen.webp",
   },
 
   {
@@ -110,7 +110,7 @@ const departmentLeaders: Leader[] = [
     description:
       "Ajudando novos batizados a conhecerem os fundamentos da fé e iniciarem sua caminhada cristã.",
 
-      image: "/images/lideranca/projeto-start.png",
+      image: "/images/lideranca/projeto-start.webp",
   },
     {
     name: "Liderança da Mídia",
@@ -120,7 +120,7 @@ const departmentLeaders: Leader[] = [
     description:
       "Ajudando novos batizados a conhecerem os fundamentos da fé e iniciarem sua caminhada cristã.",
 
-      image: "/images/lideranca/midia.png",
+      image: "/images/lideranca/midia.webp",
     
   },
     {
@@ -131,7 +131,7 @@ const departmentLeaders: Leader[] = [
     description:
       "Ajudando novos batizados a conhecerem os fundamentos da fé e iniciarem sua caminhada cristã.",
 
-      image: "/images/lideranca/voluntarios2.png",
+      image: "/images/lideranca/voluntarios2.webp",
     
   },
       {
@@ -142,7 +142,7 @@ const departmentLeaders: Leader[] = [
     description:
       "Ajudando novos batizados a conhecerem os fundamentos da fé e iniciarem sua caminhada cristã.",
 
-      image: "/images/lideranca/projeto-esperanca.png",
+      image: "/images/lideranca/projeto-esperanca.webp",
     
   },
 ];

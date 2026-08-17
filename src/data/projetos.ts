@@ -22,7 +22,7 @@ export const projetos: Projeto[] = [
     slug: "batismo",
     name: "Batismo nas Águas",
     description: "Uma decisão de fé e uma nova caminhada com Cristo.",
-    image: "/images/projetos/batismo.png",
+    image: "/images/projetos/batismo.webp",
     sobre:
       "O batismo é uma decisão pessoal de fé e o início de uma nova caminhada com Cristo. Na IBR Lisboa, os batismos acontecem na Praia de Caxias e realizam-se aproximadamente a cada cinco meses. Antes do batismo há um tempo de preparação, para que cada pessoa compreenda o significado deste passo e siga acompanhada. Para participar, basta falar com o responsável em qualquer culto ou enviar mensagem — a partir daí explicamos todos os detalhes.",
   },

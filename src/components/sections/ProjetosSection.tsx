@@ -51,6 +51,7 @@ export function ProjetosSection() {
                     alt={projeto.name}
                     width={600}
                     height={440}
+                    sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, calc(100vw - 3rem)"
                     className={`transition duration-700 group-hover:scale-105 ${
                       projeto.logo
                         ? "max-h-full w-auto object-contain"

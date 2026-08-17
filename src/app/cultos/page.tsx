@@ -323,6 +323,7 @@ export default async function CultosPage() {
                     src={getCultoCardImage(culto.nomeDia)}
                     alt={culto.nome}
                     fill
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 3rem)"
                     className="object-cover"
                   />
 
@@ -502,6 +503,7 @@ aspect-video
 src={mensagem.imagem}
 alt={mensagem.titulo}
 fill
+sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, calc(100vw - 3rem)"
 className="object-cover"
 />
 

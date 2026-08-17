@@ -9,8 +9,65 @@ function offsetLisboa(data: Date): number {
   return (lisboa.getTime() - utc.getTime()) / 60000;
 }
 
-export function getNextCulto() {
-  const agora = new Date();
+export function getNextCulto(agora = new Date()) {
+  const proximos = getCultosDaSemana(agora).map((culto) => {
+    const data = new Date(culto.data);
+
+    if (data <= agora) {
+      data.setDate(data.getDate() + 7);
+    }
+
+    return { ...culto, data };
+  });
+
+  return (
+    proximos.sort((a, b) => a.data.getTime() - b.data.getTime())[0] ?? null
+  );
+}
+
+type ScheduledTransmissionStatus = "upcoming" | "starting" | "waiting";
+
+export function getScheduledTransmission(agora = new Date()) {
+  const transmissoes = getCultosDaSemana(agora).filter(
+    (culto) => culto.transmissao
+  );
+
+  const dentroDaJanela = transmissoes
+    .map((culto) => ({
+      culto,
+      minutosAteInicio: (culto.data.getTime() - agora.getTime()) / 60_000,
+    }))
+    .filter(
+      ({ minutosAteInicio }) =>
+        minutosAteInicio <= 10 && minutosAteInicio >= -30
+    )
+    .sort(
+      (a, b) => Math.abs(a.minutosAteInicio) - Math.abs(b.minutosAteInicio)
+    )[0];
+
+  if (dentroDaJanela) {
+    const status: ScheduledTransmissionStatus =
+      dentroDaJanela.minutosAteInicio > 0 ? "starting" : "waiting";
+
+    return { ...dentroDaJanela.culto, status };
+  }
+
+  const proxima = transmissoes
+    .map((culto) => {
+      const data = new Date(culto.data);
+
+      if (data <= agora) {
+        data.setDate(data.getDate() + 7);
+      }
+
+      return { ...culto, data };
+    })
+    .sort((a, b) => a.data.getTime() - b.data.getTime())[0];
+
+  return proxima ? { ...proxima, status: "upcoming" as const } : null;
+}
+
+function getCultosDaSemana(agora: Date) {
 
   const offset = offsetLisboa(agora);
 
@@ -18,9 +75,8 @@ export function getNextCulto() {
   const emLisboa = new Date(agora.getTime() + offset * 60000);
   const diaAtual = emLisboa.getUTCDay();
 
-  const proximos = cultos.map((culto) => {
-    let diferenca = culto.diaSemana - diaAtual;
-    if (diferenca < 0) diferenca += 7;
+  return cultos.map((culto) => {
+    const diferenca = culto.diaSemana - diaAtual;
 
     const [hora, minuto] = culto.horario.replace("h", ":").split(":");
 
@@ -31,15 +87,6 @@ export function getNextCulto() {
 
     const dataReal = new Date(data.getTime() - offset * 60000);
 
-    // Se já passou, vai para a semana seguinte
-    if (dataReal <= agora) {
-      dataReal.setDate(dataReal.getDate() + 7);
-    }
-
     return { ...culto, data: dataReal };
   });
-
-  return (
-    proximos.sort((a, b) => a.data.getTime() - b.data.getTime())[0] ?? null
-  );
 }

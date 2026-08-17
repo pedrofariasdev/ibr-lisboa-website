@@ -9,8 +9,8 @@ export const SITE_URL =
 
 const OPEN_GRAPH_IMAGE = {
   url: "/images/icons/og.png",
-  width: 150,
-  height: 150,
+  width: 1200,
+  height: 630,
   alt: "IBR Lisboa",
 };
 
@@ -43,7 +43,7 @@ export function createPageMetadata({
       images: [OPEN_GRAPH_IMAGE],
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
       title: socialTitle,
       description,
       images: [OPEN_GRAPH_IMAGE.url],
