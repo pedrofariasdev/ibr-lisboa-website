@@ -7,7 +7,7 @@ export function PrivacySettingsButton() {
 
   return (
     <button
-      className="text-left text-white/45 transition hover:text-white"
+      className="text-left text-white/60 transition hover:text-white"
       onClick={openSettings}
       type="button"
     >

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useRef } from "react";
 import { getNextCulto } from "@/lib/getNextCulto";
 import { getLiveStatus } from "@/lib/getLiveStatus";
 
@@ -32,7 +33,18 @@ export function Navbar() {
   const [activeMenu, setActiveMenu] =
     useState<string | null>(null);
 
+  const [isMobileMenuOpen, setIsMobileMenuOpen] =
+    useState(false);
+
+  const mobileMenuButtonRef =
+    useRef<HTMLButtonElement>(null);
+
   const [isLive, setIsLive] = useState(false);
+
+  function closeNavigation() {
+    setActiveMenu(null);
+    setIsMobileMenuOpen(false);
+  }
 
   useEffect(() => {
     function verificar() {
@@ -47,6 +59,21 @@ export function Navbar() {
 
     return () => clearInterval(intervalo);
   }, []);
+
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+
+    function handleEscape(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setIsMobileMenuOpen(false);
+        mobileMenuButtonRef.current?.focus();
+      }
+    }
+
+    document.addEventListener("keydown", handleEscape);
+
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, [isMobileMenuOpen]);
 
 
   return (
@@ -79,7 +106,7 @@ export function Navbar() {
         <Link
           href="/"
           className="flex flex-col leading-none"
-          onClick={() => setActiveMenu(null)}
+          onClick={closeNavigation}
         >
 
           <span className="text-2xl font-bold tracking-tight">
@@ -287,8 +314,15 @@ export function Navbar() {
         {/* Mobile */}
 
         <button
+          ref={mobileMenuButtonRef}
           type="button"
-          aria-label="Abrir menu"
+          aria-controls="mobile-navigation"
+          aria-expanded={isMobileMenuOpen}
+          aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
+          onClick={() => {
+            setActiveMenu(null);
+            setIsMobileMenuOpen((isOpen) => !isOpen);
+          }}
           className="
             flex
             h-10
@@ -301,8 +335,125 @@ export function Navbar() {
             lg:hidden
           "
         >
-          ☰
+          <span aria-hidden="true">
+            {isMobileMenuOpen ? "×" : "☰"}
+          </span>
         </button>
+
+
+        {isMobileMenuOpen && (
+          <div
+            id="mobile-navigation"
+            className="
+              absolute
+              left-0
+              right-0
+              top-full
+              mt-3
+              max-h-[calc(100vh-7rem)]
+              overflow-y-auto
+              rounded-2xl
+              border
+              border-white/10
+              bg-[#0b0b0b]/98
+              p-3
+              shadow-2xl
+              backdrop-blur-xl
+              lg:hidden
+            "
+          >
+            <ul className="space-y-1">
+              {navigationItems.map((item) => (
+                <li key={item.label}>
+                  <Link
+                    href={resolveNavigationHref(item.label, item.href)}
+                    onClick={closeNavigation}
+                    className="
+                      block
+                      rounded-xl
+                      px-4
+                      py-3
+                      text-base
+                      font-semibold
+                      text-white
+                      transition
+                      hover:bg-white/10
+                      focus-visible:bg-white/10
+                      focus-visible:outline-none
+                      focus-visible:ring-2
+                      focus-visible:ring-[#e4a63a]
+                    "
+                  >
+                    {item.label}
+                  </Link>
+
+                  {item.children?.length && (
+                    <ul className="mb-2 ml-4 border-l border-white/10 pl-3">
+                      {item.children.map((child) => (
+                        <li key={child.label}>
+                          <Link
+                            href={child.href}
+                            onClick={closeNavigation}
+                            className="
+                              block
+                              rounded-lg
+                              px-3
+                              py-2.5
+                              text-sm
+                              text-white/75
+                              transition
+                              hover:bg-[#e4a63a]/10
+                              hover:text-[#e4a63a]
+                              focus-visible:bg-[#e4a63a]/10
+                              focus-visible:text-[#e4a63a]
+                              focus-visible:outline-none
+                              focus-visible:ring-2
+                              focus-visible:ring-[#e4a63a]
+                            "
+                          >
+                            {child.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
+
+              <li className="border-t border-white/10 pt-2">
+                <Link
+                  href={isLive ? "/cultos#ao-vivo" : "/cultos"}
+                  onClick={closeNavigation}
+                  className={`
+                    flex
+                    items-center
+                    justify-center
+                    gap-2
+                    rounded-xl
+                    px-4
+                    py-3
+                    text-sm
+                    font-semibold
+                    transition
+                    focus-visible:outline-none
+                    focus-visible:ring-2
+                    focus-visible:ring-[#e4a63a]
+                    ${
+                      isLive
+                        ? "bg-[#e4a63a] text-black hover:bg-[#f0b64c]"
+                        : "border border-white/15 bg-white/5 text-white hover:bg-white/10"
+                    }
+                  `}
+                >
+                  {isLive && (
+                    <span className="h-2.5 w-2.5 rounded-full bg-red-600" />
+                  )}
+                  {isLive ? liveNavigation.liveLabel : liveNavigation.offlineLabel}
+                </Link>
+              </li>
+            </ul>
+          </div>
+        )}
 
 
       </nav>

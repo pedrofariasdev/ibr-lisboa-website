@@ -137,7 +137,7 @@ export function Footer() {
 
 
 
-        <div className="mt-16 border-t border-white/10 pt-8 text-sm text-white/40">
+        <div className="mt-16 border-t border-white/10 pt-8 text-sm text-white/60">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             <p>
               © {new Date().getFullYear()} IBR Lisboa. Todos os direitos
